@@ -40,10 +40,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var fs_1 = __importDefault(require("fs"));
 var Cache = /** @class */ (function () {
-    function Cache(path) {
-        if (path === void 0) { path = './cache/'; }
-        this.path = path;
+    function Cache() {
+        this.path = './cache/';
     }
+    Cache.prototype.setPath = function (path) {
+        this.path = path;
+    };
     Cache.prototype.clearCache = function () {
         try {
             fs_1.default.rmSync(this.path, { recursive: true, force: true });
@@ -58,33 +60,32 @@ var Cache = /** @class */ (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 fs_1.default.readFile(this.path + name + '.json', function (err, data) { return __awaiter(_this, void 0, void 0, function () {
-                    var found;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
+                    var found, _a;
+                    return __generator(this, function (_b) {
+                        switch (_b.label) {
                             case 0:
                                 if (!err) return [3 /*break*/, 5];
-                                found = void 0;
                                 if (!(functionality == 1)) return [3 /*break*/, 2];
                                 return [4 /*yield*/, schema.findOne(query)];
                             case 1:
-                                found = _a.sent();
+                                _a = _b.sent();
                                 return [3 /*break*/, 4];
                             case 2: return [4 /*yield*/, schema.find(query)];
                             case 3:
-                                found = _a.sent();
-                                _a.label = 4;
+                                _a = _b.sent();
+                                _b.label = 4;
                             case 4:
+                                found = _a;
                                 if (!!found) {
                                     this.saveInCache(name, found);
                                     resolve(found);
                                 }
-                                else {
+                                else
                                     resolve(null);
-                                }
                                 return [3 /*break*/, 6];
                             case 5:
                                 resolve(JSON.parse(data));
-                                _a.label = 6;
+                                _b.label = 6;
                             case 6: return [2 /*return*/];
                         }
                     });

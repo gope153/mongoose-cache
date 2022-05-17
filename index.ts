@@ -34,7 +34,7 @@ class Cache {
 		})
 	}
 
-	async saveInCache(name: string, data: ) {
+	async saveInCache(name: string, data: {}) {
 		return new Promise((resolve, reject) => {
 			fs.mkdir(this.path, { recursive: true }, err => {
 				if (err) return reject(err)
