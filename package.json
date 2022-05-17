@@ -1,0 +1,35 @@
+{
+	"name": "mongoose-caching",
+	"version": "1.0.0",
+	"description": "simple project to cache mongoose querys for myself",
+	"main": "dist/index.js",
+	"scripts": {
+		"start": "concurrently npm:run:cache && npm:run:tsc",
+		"run:cache": "nodemon --watch './dist'",
+		"run:tsc": "tsc",
+		"build": "tsc",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/gope153/mongoose-cache.git"
+	},
+	"keywords": [
+		"mongoose"
+	],
+	"author": "gope153",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/gope153/mongoose-cache/issues"
+	},
+	"homepage": "https://github.com/gope153/mongoose-cache#readme",
+	"devDependencies": {
+		"@types/node": "^17.0.34",
+		"concurrently": "^7.2.0",
+		"nodemon": "^2.0.16",
+		"ts-node": "^10.7.0"
+	},
+	"dependencies": {
+		"mongoose": "^6.3.3"
+	}
+}
