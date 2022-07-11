@@ -15,7 +15,7 @@ class Cache {
 		try {
 			fs.rmSync(this.path, { recursive: true, force: true });
 		} catch (error) {
-
+			console.log("error while deleting", error);
 		}
 	}
 

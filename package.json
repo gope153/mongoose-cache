@@ -1,12 +1,9 @@
 {
 	"name": "mongoose-caching",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "simple project to cache mongoose querys for myself",
 	"main": "dist/index.js",
 	"scripts": {
-		"start": "concurrently npm:run:cache && npm:run:tsc",
-		"run:cache": "nodemon --watch './dist'",
-		"run:tsc": "tsc",
 		"build": "tsc",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
