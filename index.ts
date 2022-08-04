@@ -12,12 +12,8 @@ class Cache {
 	}
 
 	clearCache() {
-		try {
-			fs.rmdirSync(this.path, { recursive: true });
-			console.log("Cache cleared");
-
-		} catch (error) {
-			console.log("error while deleting", error);
+		if (fs.rmdirSync(this.path, { recursive: true }) != undefined) {
+			throw new Error("error clearing cache");
 		}
 	}
 
