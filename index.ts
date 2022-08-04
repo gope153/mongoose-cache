@@ -13,7 +13,7 @@ class Cache {
 
 	clearCache() {
 		try {
-			fs.rmSync(this.path, { recursive: true, force: true });
+			fs.rmdirSync(this.path, { recursive: true });
 		} catch (error) {
 			console.log("error while deleting", error);
 		}
@@ -29,7 +29,9 @@ class Cache {
 						resolve(found)
 					} else resolve(null)
 				}
-				else resolve(JSON.parse(data))
+				else {
+					resolve(JSON.parse(data))
+				}
 			})
 		})
 	}
