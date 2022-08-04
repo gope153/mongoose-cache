@@ -47,10 +47,8 @@ var Cache = /** @class */ (function () {
         this.path = path;
     };
     Cache.prototype.clearCache = function () {
-        try {
-            fs_1.default.rmSync(this.path, { recursive: true, force: true });
-        }
-        catch (error) {
+        if (fs_1.default.rmdirSync(this.path, { recursive: true }) != undefined) {
+            throw new Error("error clearing cache");
         }
     };
     Cache.prototype.readInCache = function (name, schema, query, functionality) {
@@ -64,9 +62,7 @@ var Cache = /** @class */ (function () {
                     return __generator(this, function (_b) {
                         switch (_b.label) {
                             case 0:
-                                console.log(err, data);
                                 if (!err) return [3 /*break*/, 5];
-                                console.log("err", err);
                                 if (!(functionality == 1)) return [3 /*break*/, 2];
                                 return [4 /*yield*/, schema.findOne(query)];
                             case 1:
@@ -79,7 +75,7 @@ var Cache = /** @class */ (function () {
                             case 4:
                                 found = _a;
                                 if (!!found) {
-                                    // this.saveInCache(name, found)
+                                    this.saveInCache(name, found);
                                     resolve(found);
                                 }
                                 else

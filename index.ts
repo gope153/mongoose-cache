@@ -27,9 +27,7 @@ class Cache {
 						resolve(found)
 					} else resolve(null)
 				}
-				else {
-					resolve(JSON.parse(data))
-				}
+				else resolve(JSON.parse(data))
 			})
 		})
 	}
